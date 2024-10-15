@@ -1,61 +1,74 @@
-#define _CRT_SECURE_NO_WARNINGS
-#include <stdio.h>
+﻿#include <iostream>
+#include <fstream>
+#include <string>
 
-#define MAX 1024
+using namespace std;
 
-int NumberOfRows(const char*);
+struct Student {
+    string ime;
+    string prezime;
+    int bodovi;
+};
 
+int brojRedakaDatoteke(const string& imeDatoteke) {
+    ifstream file(imeDatoteke);
+    int brojRedaka = 0;
+    string linija;
 
-int main()
-{
-	int numOfRows = 0;
+    while (getline(file, linija)) {
+        brojRedaka++;
+    }
 
-	numOfRows = NumberOfRows("imedat.txt");
-	
-	printf("Hello world\n");
-	return 0;
+    file.close();
+    return brojRedaka;
 }
 
+void ucitajStudente(const string& imeDatoteke, Student* studenti, int brojStudenata, int& maxBodovi) {
+    ifstream file(imeDatoteke);
+    maxBodovi = 0;
 
-int NumberOfRows(const char*)
-{
-	
+    for (int i = 0; i < brojStudenata; i++) {
+        file >> studenti[i].ime >> studenti[i].prezime >> studenti[i].bodovi;
 
-	FILE* fp = NULL;
-	int numOfRows = 0;
-	char buffer[MAX] = {};
+        if (studenti[i].bodovi > maxBodovi) {
+            maxBodovi = studenti[i].bodovi;
+        }
+    }
 
-	fp = fopen(fileName, "r");
-	if(!fp)
-	{
-		return -1;
-	}
-
-	while(!feof(fp))
-	{
-	   fgets(buffer, MAX, fp)
-	   numOfRows++;
-	}
-
+    file.close();
 }
-int NumberOfRows(const char*)
-{
-	
 
-	FILE* fp = NULL;
-	int numOfRows = 0;
-	char buffer[MAX] = {};
+void ispisiStudente(Student* studenti, int brojStudenata, int maxBodovi) {
+    for (int i = 0; i < brojStudenata; i++) {
+        double relativniBodovi = (double)studenti[i].bodovi / maxBodovi * 100;
+        cout << "Ime: " << studenti[i].ime << ", Prezime: " << studenti[i].prezime
+             << ", Bodovi: " << studenti[i].bodovi << ", Relativni broj bodova: " 
+             << relativniBodovi << "%" << endl;
+    }
+}
 
-	fp = fopen(fileName, "r");
-	if(!fp)
-	{
-		return -1;
-	}
+int main() {
+    string imeDatoteke = "studenti.txt";
 
-	while(!feof(fp))
-	{
-	   fgets(buffer, MAX, fp)
-	   numOfRows++;
-	}
+    // Prvo čitanje broja redaka
+    int brojStudenata = brojRedakaDatoteke(imeDatoteke);
+    if (brojStudenata == 0) {
+        cout << "Datoteka je prazna ili nije pronadena!" << endl;
+        return 1;
+    }
 
+    // Dinamička alokacija memorije za studente
+    Student* studenti = new Student[brojStudenata];
+
+    // Učitavanje studenata i traženje maksimalnog broja bodova
+    int maxBodovi = 0;
+    ucitajStudente(imeDatoteke, studenti, brojStudenata, maxBodovi);
+
+    // Ispis studenata s apsolutnim i relativnim brojem bodova
+    ispisiStudente(studenti, brojStudenata, maxBodovi);
+
+    // Oslobađanje memorije
+    delete[] studenti;
+
+    return 0;
 }
