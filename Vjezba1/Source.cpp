@@ -38,3 +38,24 @@ int NumberOfRows(const char*)
 	}
 
 }
+int NumberOfRows(const char*)
+{
+	
+
+	FILE* fp = NULL;
+	int numOfRows = 0;
+	char buffer[MAX] = {};
+
+	fp = fopen(fileName, "r");
+	if(!fp)
+	{
+		return -1;
+	}
+
+	while(!feof(fp))
+	{
+	   fgets(buffer, MAX, fp)
+	   numOfRows++;
+	}
+
+}
