@@ -237,7 +237,7 @@ int ReadData(Pozicija P) {
         return 1;
     }
 
-    // Brisanje postojeće liste
+    
     while (P->Next) {
         Pozicija temp = P->Next;
         P->Next = temp->Next;
