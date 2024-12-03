@@ -1,0 +1,10 @@
+﻿  betno.cpp
+C:\Users\Nikola\source\repos\Project2\Project2\betno.cpp(1,4): error C2014: preprocessor command must start as first nonwhite space
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.41.34120\include\sal.h(2361,1): error C2144: syntax error: 'int' should be preceded by ';'
+  (compiling source file 'betno.cpp')
+  
+C:\Users\Nikola\source\repos\Project2\Project2\betno.cpp(1,1): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\Nikola\source\repos\Project2\Project2\betno.cpp(24,20): error C7555: use of designated initializers requires at least '/std:c++20'
+C:\Users\Nikola\source\repos\Project2\Project2\betno.cpp(43,16): error C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\Nikola\source\repos\Project2\Project2\betno.cpp(51,12): error C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\Nikola\source\repos\Project2\Project2\betno.cpp(53,13): error C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
