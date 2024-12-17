@@ -1,0 +1,5 @@
+2024-10-11
+banana 2 3
+sljiva 2 4
+mrkva 3 1
+jabuka 4 1

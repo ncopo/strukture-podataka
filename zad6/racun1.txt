@@ -1,0 +1,4 @@
+2024-12-15
+naranca 2 1
+banana 1 2
+jabuka 3 2
